@@ -1,0 +1,60 @@
+<%- include('partials/header'); -%>
+  <div class="container">
+    <header class="text-center text-light my-4">
+      <h1 class="mb-4">Todo List</h1>
+      <form autocomplete="off" class="search">
+        <input type="text" name="search" placeholder="search todos" class="form-control m-auto">
+      </form>
+    </header>
+    <div class="todos-wrapper">
+      <ul class="list-group todos mx-auto text-light">
+        <%if (blogs.length > 0) { %>
+          <% blogs.sort().reverse() %> 
+          <% blogs.forEach(blog => { %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span> <%= blog.title%> </span>
+              <i onclick="proceed(id)" class="far fa-trash-alt delete" id=<%=blog._id%>></i>
+            </li>
+          <% }) %> 
+        <% } %>
+      </ul>
+    </div>
+    <form action="/todoos" autocomplete="off" class="add text-center my-4" method="post" >
+      <label class="text-light" for="add"></label>
+      <input class="form-control m-auto" type="text" name="add" placeholder="Add a new todo..."/>
+    </form>
+  </div>
+<script>
+  // const addForm = document.querySelector('.add'); // сохраняем форму .add 
+  const list = document.querySelector('.todos');
+  const search = document.querySelector('.search input');
+
+  const filterTodos = word => {
+
+    Array.from(list.children)
+      .filter((todo) => !todo.textContent.toLowerCase().includes(word))
+      .forEach((todo) => todo.classList.add('filtered'));
+
+    Array.from(list.children)
+      .filter((todo) => todo.textContent.toLowerCase().includes(word))
+      .forEach((todo) => todo.classList.remove('filtered'))
+  }
+
+  search.addEventListener('keyup', event => {
+    const word = search.value.trim().toLowerCase();
+    filterTodos(word);
+  })
+
+  function proceed(id) {
+    const form = document.createElement('form');
+    form.setAttribute('method', 'post');
+    form.setAttribute('action', `/todoos/:${id}`);
+    form.style.visibility = 'hidden';
+ 
+    document.body.appendChild(form)
+    form.submit();
+  }
+
+ 
+</script>  
+<!-- <%- include('partials/footer'); -%> -->

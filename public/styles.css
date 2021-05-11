@@ -1,0 +1,244 @@
+/* google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+body {
+  margin: 20px 40px;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  background: #352f5b;
+}
+
+.headerhome {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 50%;
+}
+header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+ul,
+li,
+a,
+p,
+label,
+button,
+div,
+footer {
+  margin: 0;
+  padding: 0;
+  font-family: "Quicksand", sans-serif;
+  color: rgb(239, 214, 246);
+}
+input {
+  margin: 0;
+  padding: 0;
+  font-family: "Quicksand", sans-serif;
+  /* color: #352f5b; */
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 120px;
+}
+nav ul {
+  display: flex;
+  align-items: center;
+}
+nav li {
+  margin-left: 20px;
+}
+nav li a {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8em;
+  display: block;
+  padding: 10px 16px;
+  letter-spacing: 2px;
+}
+.btn {
+  border-radius: 36px;
+  background: #fee996;
+}
+form h2 {
+  font-size: 2.4em;
+  font-weight: 900;
+  margin-bottom: 40px;
+}
+form {
+  width: 360px;
+  margin: 0 auto;
+  padding: 30px;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background: #423a6f;
+}
+
+input {
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 1em;
+  width: 100%;
+}
+label {
+  display: block;
+  margin: 0 10px;
+}
+button {
+  color: black;
+  margin-top: 30px;
+  border-radius: 36px;
+  background: #fee996;
+  border: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8em;
+  display: block;
+  padding: 10px 16px;
+  letter-spacing: 2px;
+}
+.error {
+  color: #ff0099;
+  margin: 10px 2px;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+header div {
+  width: 100%;
+}
+
+header h2 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+header h3 {
+  font-size: 1.6em;
+  margin-bottom: 10px;
+  margin-left: 2px;
+  color: #999;
+}
+header .btn {
+  margin-top: 20px;
+  padding: 12px 18px;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 0.8em;
+}
+
+footer {
+  text-align: center;
+  margin-top: 120px;
+  color: #aaa;
+}
+
+/* ---------- */
+
+.container {
+  max-width: 400px;
+}
+input[type="text"],
+input[type="text"]:focus,
+input[type="password"],
+input[type="password"]:focus {
+  color: black;
+  border: none;
+  max-width: 400px;
+  background-color: #352f5b;
+}
+
+.todos li {
+  background: #423a6f;
+  color: rgb(239, 214, 246);
+}
+.delete {
+  cursor: pointer;
+}
+.filtered {
+  display: none !important;
+}
+.todos-wrapper {
+  max-width: 400px;
+  overflow-y: scroll;
+  max-height: 400px;
+}
+::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
+
+.add {
+  width: 375px;
+}
+
+@media (max-width: 765px) {
+  /* .headerhome {
+    width: 100%;
+  }
+  
+  body {
+    margin: 0, 0;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 30px;
+  }
+  nav ul {
+    display: flex;
+    align-items: center;
+  }
+  nav li {
+    margin-left: 0px;
+  } */
+  .welcomeuser {
+    visibility: hidden;
+  }
+  nav li a {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.2em;
+    display: block;
+    padding: 10px 16px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  nav h1 {
+    font-size: 1.5em;
+    visibility: hidden;
+  }
+  .singupbutton {
+    font-size: 2em !important;
+  }
+  .headerhome h2 {
+    font-size: 1.5em;
+  }
+  .headerhome h3 {
+    font-size: 1em;
+  }
+  .headerhome .btn {
+    font-size: 1em;
+    /* margin-top: 60px; */
+  }
+}
