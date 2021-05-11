@@ -1,3 +1,3 @@
-# Node.JS pet project
+# Pet Project
 
 Project to learn JS Back-End dev.

@@ -197,53 +197,40 @@ input[type="password"]:focus {
   }
 }
 @media (max-width: 765px) {
-  /* .headerhome {
-    width: 100%;
-  }
-  
+  html,
   body {
-    margin: 0, 0;
+    min-height: 100%;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    max-height: 100%;
   }
   nav {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 30px;
+    justify-content: flex-end;
+    margin: 0;
+  }
+  nav .welcomeuser {
+    display: none;
+  }
+  nav .logo {
+    display: none;
   }
   nav ul {
-    display: flex;
-    align-items: center;
+    margin: 0;
+    padding: 0;
   }
-  nav li {
-    margin-left: 0px;
-  } */
-  .welcomeuser {
-    visibility: hidden;
+  ul li {
+    font-size: 25px;
   }
-  nav li a {
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 1.2em;
-    display: block;
-    padding: 10px 16px;
-    letter-spacing: 1px;
-    white-space: nowrap;
+  .add {
+    max-width: 100%;
+    bottom: 0;
   }
-  nav h1 {
-    font-size: 1.5em;
-    visibility: hidden;
-  }
-  .singupbutton {
-    font-size: 2em !important;
-  }
-  .headerhome h2 {
-    font-size: 1.5em;
-  }
-  .headerhome h3 {
-    font-size: 1em;
-  }
-  .headerhome .btn {
-    font-size: 1em;
-    /* margin-top: 60px; */
+  .container {
+    position: absolute;
+    padding: 0;
   }
 }
