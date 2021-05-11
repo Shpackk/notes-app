@@ -1,3 +1,9 @@
+
+# node modules library
 /node_modules/
+
+# test field for JS
 junk.js
+
+#creating a node 
 noteCreate.js
