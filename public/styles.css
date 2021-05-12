@@ -92,6 +92,15 @@ form {
   background: #423a6f;
 }
 
+.formContainer form {
+  margin: 0;
+  position: absolute; /*CENTER FORM*/
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
 input {
   padding: 10px 12px;
   border-radius: 4px;
@@ -207,9 +216,10 @@ input[type="password"]:focus {
     max-width: 100%;
     max-height: 100%;
   }
+  /* navigation bar for all pages */
   nav {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     margin: 0;
   }
   nav .welcomeuser {
@@ -225,12 +235,36 @@ input[type="password"]:focus {
   ul li {
     font-size: 25px;
   }
+  /* home page */
+  .headings h2 {
+    font-size: 50px;
+  }
+  .headerhome {
+    position: absolute;
+    height: 80vh;
+  }
+  /* login page */
+  .formContainer {
+    height: 90vh;
+    display: block;
+  }
+  .formContainer form {
+    margin: 0;
+    position: absolute; /*CENTER FORM*/
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* signup */
+
+  /* todos pages */
   .add {
     max-width: 100%;
     bottom: 0;
   }
   .container {
-    position: absolute;
     padding: 0;
   }
 }

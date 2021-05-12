@@ -1,6 +1,6 @@
 <%- include('partials/header'); -%>
 
-<form action="/signup">
+<div class="formContainer"><form action="/signup">
   <h2>Sign up</h2>
   <label for="email">Email</label>
   <input type="text" name="email" required />
@@ -10,6 +10,7 @@
   <div class="password error"></div>
   <button>Sign up</button>
 </form>
+</div>
 
 <%- include('partials/footer'); -%>
 
