@@ -1,15 +1,16 @@
 <%- include('partials/header'); -%>
 
-<div class="formContainer"><form action="/signup">
-  <h2>Login</h2>
-  <label for="email">Email</label>
-  <input autocomplete="none" type="text" name="email"  />
-  <div class="email error"></div>
-  <label for="password">Password</label>
-  <input autocomplete="none" type="password" name="password" />
-  <div class="password error"></div>
-  <button>login</button>
-</form>
+<div class="formContainer">
+  <form action="/signup" autocomplete="off">
+    <h2>Login</h2>
+      <label for="email">Email</label>
+        <input type="text" name="email"  />
+        <div class="email error"></div>
+      <label for="password">Password</label>
+        <input type="password" name="password" />
+        <div class="password error"></div>
+    <button>login</button>
+  </form>
 </div>
 
 <%- include('partials/footer'); -%>
