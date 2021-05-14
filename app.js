@@ -26,6 +26,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
   .then((result) => app.listen(3000)) //----------------------------------------if connected listen at port 3000
   .catch((err) => console.log(err)); // ----------------------------------------else - log ther error
 
+mongoose.set('useFindAndModify', false);
 // routes
 app.get('*', checkUser); // -----------------------------------------------------all routs are checking for user
 app.get('/', (req, res) => res.render('home')); // ------------------------------render 'home' when trying to access '/'
@@ -34,15 +35,30 @@ app.get('/', (req, res) => res.render('home')); // -----------------------------
 app.get('/todoos', requireAuth, (req, res) => {
   const token = req.cookies.jwt;
   const UserId = jwt.decode(token, 'xfoMa2pPlRosdyqzc3MPjvOWppGOiXnGQnD91sV8ynA4zZ9hsT8USWriEgU9HCJ').id;
-
-  Blog.find({ userId: UserId })
+  User.find({ _id: UserId })
     .then((result) => {
-      res.render('todoos', { blogs: result })
-      console.log(UserId);
+      const userExp = result[0].userExperience
+      Blog.find({ userId: UserId })
+        .then((result) => {
+          res.render('todoos', { blogs: result, userExp: userExp })
+          // console.log(UserId, userExp);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
     })
+
+  // Blog.find({ userId: UserId })
+  //   .then((result) => {
+  //     res.render('todoos', { blogs: result })
+  //     console.log(UserId);
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   })
 });
 
 app.post('/todoos', urlencodedParser, requireAuth, (req, res) => {
@@ -64,16 +80,20 @@ app.post('/todoos', urlencodedParser, requireAuth, (req, res) => {
 })
 
 app.post('/todoos/:id', urlencodedParser, requireAuth, (req, res) => {
+  const token = req.cookies.jwt;
+  const UserId = jwt.decode(token, 'xfoMa2pPlRosdyqzc3MPjvOWppGOiXnGQnD91sV8ynA4zZ9hsT8USWriEgU9HCJ').id;
   const deletionID = req.url.slice(9);
-  //console.log(deletionID);
+  console.log(deletionID);
   Blog.findOneAndDelete({ _id: deletionID })
     .then(result => {
-      res.redirect('/todoos')
+      User.findByIdAndUpdate({ _id: UserId }, { $inc: { userExperience: +20 } })
+        .then(result => {
+          res.redirect('/todoos')
+        })
     })
     .catch(error => {
       console.log(error);
     })
 })
-
 
 app.use(authRoutes);
