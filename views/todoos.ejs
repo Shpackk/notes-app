@@ -17,8 +17,8 @@
       <h1><a href="/" class="logo">Living A Day</a></h1>
       <ul>
         <% if (user) { %>
-          <li class="welcomeuser">Welcome, <%= user.email %>
-          </li>
+          <li class="welcomeuser"> Welcome, <%= user.email %> </li>
+          <li class="userExpreience"><%= userExp  %> <i class="fas fa-star"></i></li>
           <li><a href="/logout">Log out</a></li>
           <% } else { %>
             <li><a href="/login" class="loginMobile">Log in</a></li>
@@ -80,7 +80,7 @@
     form.setAttribute('method', 'post');
     form.setAttribute('action', `/todoos/:${id}`);
     form.style.visibility = 'hidden';
- 
+    
     document.body.appendChild(form)
     form.submit();
   }
