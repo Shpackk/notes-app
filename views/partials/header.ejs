@@ -15,6 +15,7 @@
     <ul>
       <% if (user) { %>
         <li class="welcomeuser">Welcome, <%= user.email %></li>
+        <li ><a href="/permission">Perm</a></li>
         <li><a href="/logout">Log out</a></li>
       <% } else { %>
         <li><a href="/login" class="loginMobile">Log in</a></li>

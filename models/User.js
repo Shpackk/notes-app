@@ -17,6 +17,12 @@ const userSchema = new mongoose.Schema({
   },
   userExperience: {
     type: Number
+  },
+  permitId: {
+    type: String
+  },
+  givenPermit: {
+    type: String
   }
 });
 

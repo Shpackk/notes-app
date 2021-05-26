@@ -219,6 +219,9 @@ input[type="password"]:focus {
   margin-top: 4px !important;
   margin-bottom: 0 !important;
 }
+.friend {
+  color: greenyellow;
+}
 @media (max-height: 800px) {
   .todos-wrapper {
     max-height: 50vh;
@@ -247,6 +250,7 @@ input[type="password"]:focus {
   nav .logo {
     display: none;
   }
+
   nav ul {
     margin: 0;
     padding: 0;

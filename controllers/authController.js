@@ -56,9 +56,11 @@ module.exports.login_get = (req, res) => {
 module.exports.signup_post = async (req, res) => {
   const { email, password } = req.body;
   const userExperience = 0;
+  const permitId = '';
+  const givenPermit = '';
 
   try {
-    const user = await User.create({ email, password, userExperience });
+    const user = await User.create({ email, password, userExperience, permitId, givenPermit });
     const token = createToken(user._id);
     res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(201).json({ user: user._id });

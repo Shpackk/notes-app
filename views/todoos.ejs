@@ -19,13 +19,14 @@
         <% if (user) { %>
           <li class="welcomeuser"> Welcome, <%= user.email %> </li>
           <li class="userExpreience"><%= userExp  %> <i class="fas fa-star"></i></li>
+          <li class="permission"><a href="/permission">Perm</a></li>
           <li><a href="/logout">Log out</a></li>
           <% } else { %>
             <li><a href="/login" class="loginMobile">Log in</a></li>
             <li><a href="/signup" class="singupbutton">Sign up</a></li>
             <% } %>
       </ul>
-    </nav>
+    </nav> 
     
    <div class="container">
       <header class="text-center text-light my-4 todosheader">
@@ -44,6 +45,7 @@
               </li>
             <% }) %> 
           <% } %>
+
         </ul>
       </div>
     </div>

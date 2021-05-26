@@ -37,9 +37,11 @@ app.get('/todoos', requireAuth, (req, res) => {
   const UserId = jwt.decode(token, 'xfoMa2pPlRosdyqzc3MPjvOWppGOiXnGQnD91sV8ynA4zZ9hsT8USWriEgU9HCJ').id;
   User.find({ _id: UserId })
     .then((result) => {
-      const userExp = result[0].userExperience
-      Blog.find({ userId: UserId })
+      const permitedBlogs = result[0].permitId;
+      const userExp = result[0].userExperience;
+      Blog.find({ userId: { $in: [UserId, permitedBlogs] } })
         .then((result) => {
+          // console.log(result)
           res.render('todoos', { blogs: result, userExp: userExp })
           // console.log(UserId, userExp);
         })
@@ -96,4 +98,35 @@ app.post('/todoos/:id', urlencodedParser, requireAuth, (req, res) => {
     })
 })
 
+app.get('/permission', requireAuth, (req, res) => {
+  const token = req.cookies.jwt;
+  const UserId = jwt.decode(token, 'xfoMa2pPlRosdyqzc3MPjvOWppGOiXnGQnD91sV8ynA4zZ9hsT8USWriEgU9HCJ').id;
+  User.find({ _id: UserId })
+    .then(result => {
+      const currentUserEmail = result[0].email;
+      const givenPermitTo = result[0].givenPermit;
+      // const friend = result[0].permitId;
+      User.find()
+        .then((result) => {
+          res.render('permission', { users: result, currentEmail: currentUserEmail, permitedUser: givenPermitTo })
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    })
+
+})
+app.post('/permission/:id', requireAuth, (req, res) => {
+  const token = req.cookies.jwt;
+  const userGivesPermit = jwt.decode(token, 'xfoMa2pPlRosdyqzc3MPjvOWppGOiXnGQnD91sV8ynA4zZ9hsT8USWriEgU9HCJ').id;
+  const userPermitIsGivenTo = req.url.slice(13);
+  User.findOneAndUpdate({ _id: userPermitIsGivenTo }, { permitId: userGivesPermit })
+    .then(result => {
+      User.findOneAndUpdate({ _id: userGivesPermit }, { givenPermit: userPermitIsGivenTo })
+        .then(result => {
+          res.redirect('/permission')
+        })
+    })
+
+})
 app.use(authRoutes);
