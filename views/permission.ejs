@@ -38,7 +38,8 @@
                                     <%= user.email%>
                                 </span>
                                 <% if(user._id == permitedUser) {%> 
-                                <i class="fa fa-check-square-o friend" aria-hidden="true" onclick="proceed(id)" id="<%= user._id%>"></i>
+                                <!-- <i class="fa fa-check-square-o friend" aria-hidden="true" onclick="proceed(id)" id="<= user._id%>"></i> -->
+                                <i class="fas fa-user-times" onclick="proceedDeletion(id)" id="<%= user._id %> "></i>
                                 <% }else{ %> 
                                 <i class="fa fa-check-square-o" aria-hidden="true" onclick="proceed(id)" id="<%= user._id%>"></i>
                                 <% } %> 
@@ -74,6 +75,14 @@
             const form = document.createElement('form');
             form.setAttribute('method', 'post');
             form.setAttribute('action', `/permission/:${id}`);
+            form.style.visibility = 'hidden'
+            document.body.appendChild(form)
+            form.submit();
+        }
+        function proceedDeletion(id){
+            const form = document.createElement('form');
+            form.setAttribute('method', 'post');
+            form.setAttribute('action', `/permission/delete/:${id}`);
             form.style.visibility = 'hidden'
             document.body.appendChild(form)
             form.submit();

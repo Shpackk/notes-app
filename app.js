@@ -129,4 +129,16 @@ app.post('/permission/:id', requireAuth, (req, res) => {
     })
 
 })
+app.post('/permission/delete/:id', requireAuth, (req, res) => {
+  const token = req.cookies.jwt;
+  const userGivesPermit = jwt.decode(token, 'xfoMa2pPlRosdyqzc3MPjvOWppGOiXnGQnD91sV8ynA4zZ9hsT8USWriEgU9HCJ').id;
+  const userPermitIsGivenTo = req.url.slice(20);
+  User.findOneAndUpdate({ _id: userPermitIsGivenTo }, { permitId: '' })
+    .then(result => {
+      User.findOneAndUpdate({ _id: userGivesPermit }, { givenPermit: '' })
+        .then(result => {
+          res.redirect('/permission')
+        })
+    })
+})
 app.use(authRoutes);
